@@ -72,7 +72,7 @@ namespace gazebo
         node = transport::NodePtr(new transport::Node());
         node->Init(raySensor->WorldName());
         // PointCloud2 publisher
-        cloud2_pub = node_->create_publisher<sensor_msgs::msg::PointCloud2>(curr_scan_topic + "_PointCloud2", 10);
+        // cloud2_pub = node_->create_publisher<sensor_msgs::msg::PointCloud2>(curr_scan_topic + "_PointCloud2", 10);
         // CustomMsg publisher
         custom_pub = node_->create_publisher<livox_ros_driver2::msg::CustomMsg>(curr_scan_topic, 10);
 
@@ -209,11 +209,11 @@ namespace gazebo
         pp_livox.point_num = count;
         custom_pub->publish(pp_livox);
 
-        // Publish PointCloud2 type message
-        sensor_msgs::msg::PointCloud2 cloud2;
-        sensor_msgs::convertPointCloudToPointCloud2(cloud, cloud2);
-        cloud2.header = cloud.header;
-        cloud2_pub->publish(cloud2);
+        // // Publish PointCloud2 type message
+        // sensor_msgs::msg::PointCloud2 cloud2;
+        // sensor_msgs::convertPointCloudToPointCloud2(cloud, cloud2);
+        // cloud2.header = cloud.header;
+        // cloud2_pub->publish(cloud2);
     }
 }
 
